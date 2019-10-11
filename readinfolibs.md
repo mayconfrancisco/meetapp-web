@@ -82,6 +82,10 @@ yarn add prop-types
 
 yarn add react-router-dom //lidar com rotas na SPA
 
+criar o styles/global e adicionar ao App.js <br/>
+criar suas paginas e layouts padroes <br />
+Criar o router das paginas privadas com os layouts padroes <br/>
+
 yarn add history //history api do navegador <br/>
 criar o service de history e export no history <br/>
 importar o service history e Router do react-router-dom no App e substituir o BrowserRouter por router, passando o history como parametro <br/>
@@ -101,6 +105,7 @@ yarn add redux react-redux redux-saga reactotron-react-js reactotron-redux react
   criar pastas src/store/modules/auth/ actions, reducer e sagas.js <br />
   criar os arquivos modules/ rootReducer e rootSaga <br />
   criar os arquivos /store/index, createStore e persistReducers caso use o redux-persist <br />
+  adicionar o Provider do react-redux e o persistGate do redux-persist/integration/react ao App.js
 
     yarn add redux react-redux // add api de estado redux - arquitetura flux
 
