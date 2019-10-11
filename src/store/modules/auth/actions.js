@@ -4,3 +4,10 @@ export function singInRequest(email, password) {
     payload: { email, password },
   };
 }
+
+export function singInSuccess(token, user) {
+  return {
+    type: '@auth/SIGN_IN_SUCCESS',
+    payload: { token, user },
+  };
+}

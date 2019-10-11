@@ -125,7 +125,9 @@ $$$$ REDUX $$$$
 
 yarn add axios // lidar com requisicoes http - melhor que o fetch do browser
 
-yarn add react-toastity //alertas tipo toast
+yarn add react-toastity //alertas tipo toast <br/>
+import 'react-toastify/dist/ReactToastify.css'; <br/>
+<ToastContainer autoClose={3000} /> no App.js
 
 http://avatars.adorable.io //para gerar avatars aleatorios - defina o tamanho e o border-radios e copie o link
 

@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
   height: 100%;
-  max-width: 300px;
+  max-width: 315px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,9 +42,10 @@ export const Content = styled.div`
       border: 0;
       border-radius: 4px;
       font-weight: bold;
+      transition: background 0.2s;
 
       &:hover {
-        background-color: ${darken(0.03, '#f94d6a')};
+        background: ${darken(0.03, '#f94d6a')};
       }
     }
   }
@@ -54,6 +55,7 @@ export const Content = styled.div`
     margin-top: 20px;
     font-weight: bold;
     color: rgba(255, 255, 255, 0.5);
+    transition: color 0.2s;
 
     &:hover {
       color: #fff;
