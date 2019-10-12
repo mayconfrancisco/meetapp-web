@@ -46,6 +46,11 @@ export const Content = styled.div`
       }
     }
 
+    span {
+      color: #f94d6a;
+      margin-bottom: 15px;
+    }
+
     button {
       margin-top: 5px;
       height: 50px;
