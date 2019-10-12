@@ -1,9 +1,10 @@
 # Barber Web (ReactJS)
 
-Frontend em ReactJS da aplicação de Meetups - A interface web é focada nos organizadores. <br/>
+Frontend em ReactJS da aplicação de MeetApp - A interface web é focada nos organizadores. <br/>
+MeetApp tem o objetivo de ser um agregador de eventos para desenvolvedores :metal:<br/>
 Projeto desenvolvido como desafio no Bootcamp da Rocketseat
 
-![Imagem do App MeetApp web Rodando](https://raw.githubusercontent.com/mayconfrancisco/meetapp-web/master/imgs/meetapp-web.gif)
+![Imagem do App MeetApp web Rodando](https://raw.githubusercontent.com/mayconfrancisco/meetapp-web/master/imgs/meetapp-web.png)
 
 
 ### Para rodar o projeto:
