@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { darken } from 'polished';
 
 export const Wrapper = styled.div`
@@ -62,16 +62,12 @@ export const Content = styled.div`
       transition: background 0.2s;
 
       &:hover {
-        background: ${darken(0.03, '#f94d6a')};
+        background: ${darken(0.08, '#f94d6a')};
       }
 
-      ${props =>
-        props.isLoading &&
-        css`
-          svg {
-            animation: ${animationButton} 1s linear infinite;
-          }
-        `}
+      svg {
+        animation: ${animationButton} 1s linear infinite;
+      }
     }
   }
 
@@ -87,29 +83,3 @@ export const Content = styled.div`
     }
   }
 `;
-
-// export const SubmitButton = styled.button.attrs(props => ({
-//   type: 'submit',
-//   disable: props.isLoading,
-// }))`
-//   margin-top: 5px;
-//   height: 50px;
-//   background-color: #f94d6a;
-//   color: #fff;
-//   border: 0;
-//   border-radius: 4px;
-//   font-weight: bold;
-//   transition: background 0.2s;
-
-//   &:hover {
-//     background: ${darken(0.03, '#f94d6a')};
-//   }
-
-//   ${props =>
-//     props.isLoading &&
-//     css`
-//       svg {
-//         animation: ${animationButton} 1s linear infinite;
-//       }
-//     `}
-// `;

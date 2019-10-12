@@ -38,7 +38,7 @@ export default function SignIn() {
           placeholder="Sua senha secreta"
         />
 
-        <button type="submit" isLoading={loading}>
+        <button type="submit">
           {loading ? <FaHourglassHalf color="#fff" size={20} /> : 'Entrar'}
         </button>
       </Form>
