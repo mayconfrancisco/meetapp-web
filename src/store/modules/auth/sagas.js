@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import api from '~/services/api';
 import history from '~/services/history';
 
-import { singInSuccess } from '~/store/modules/auth/actions';
+import { singInSuccess, signFailure } from '~/store/modules/auth/actions';
 
 export function* signIn({ payload }) {
   try {
@@ -19,6 +19,7 @@ export function* signIn({ payload }) {
 
     history.push('/dashboard');
   } catch (err) {
+    yield put(signFailure());
     toast.error('Erro ao acessar, verifique seus dados!');
   }
 }
