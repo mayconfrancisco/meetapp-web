@@ -34,6 +34,16 @@ export default function user(state = INITIAL_STATE, action) {
         break;
       }
 
+      case '@auth/ADD_ACCOUNT_REQUEST': {
+        draft.loading = true;
+        break;
+      }
+
+      case '@auth/ADD_ACCOUNT_FINISHED': {
+        draft.loading = false;
+        break;
+      }
+
       default:
     }
   });
