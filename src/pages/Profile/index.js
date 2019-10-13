@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
+import { FaHourglassHalf } from 'react-icons/fa';
 
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
@@ -34,7 +35,7 @@ const schema = Yup.object().shape({
 });
 
 export default function Profile() {
-  const profile = useSelector(state => state.user.profile);
+  const { profile, loading } = useSelector(state => state.user);
   const dispatch = useDispatch();
 
   function handleSubmit(data) {
@@ -54,7 +55,13 @@ export default function Profile() {
           name="confirmPassword"
           placeholder="Confirmação de senha"
         />
-        <button type="submit">Salvar perfil</button>
+        <button type="submit">
+          {loading ? (
+            <FaHourglassHalf color="#fff" size={20} />
+          ) : (
+            'Salvar perfil'
+          )}
+        </button>
       </Form>
     </Container>
   );

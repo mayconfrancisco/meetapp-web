@@ -13,9 +13,19 @@ export default function user(state = INITIAL_STATE, action) {
         break;
       }
 
+      case '@user/UPDATE_PROFILE_REQUEST': {
+        draft.loading = true;
+        break;
+      }
+
       case '@user/UPDATE_PROFILE_SUCCESS': {
-        console.tron.error(action.payload.profile);
         draft.profile = action.payload.profile;
+        draft.loading = false;
+        break;
+      }
+
+      case '@user/UPDATE_PROFILE_FAILURE': {
+        draft.loading = false;
         break;
       }
 

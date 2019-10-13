@@ -47,6 +47,7 @@ export const Container = styled.div`
     }
 
     button {
+      min-width: 170px;
       height: 42px;
       padding: 0 20px;
       align-self: flex-end;
