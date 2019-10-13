@@ -13,6 +13,12 @@ export default function user(state = INITIAL_STATE, action) {
         break;
       }
 
+      case '@user/UPDATE_PROFILE_SUCCESS': {
+        console.tron.error(action.payload.profile);
+        draft.profile = action.payload.profile;
+        break;
+      }
+
       case '@auth/SIGN_OUT': {
         draft.profile = {};
         break;
