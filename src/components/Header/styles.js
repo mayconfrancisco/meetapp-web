@@ -12,6 +12,7 @@ export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
 `;
 
 export const Profile = styled.div`
@@ -43,6 +44,7 @@ export const Profile = styled.div`
   }
 
   button {
+    height: 42px;
     background: #f94d6a;
     color: #fff;
     font-size: 16px;
