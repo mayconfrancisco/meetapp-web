@@ -1,8 +1,9 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
+import { FaHourglassHalf } from 'react-icons/fa';
 
 import { addAccountRequest } from '~/store/modules/user/actions';
 
@@ -19,6 +20,7 @@ const schema = Yup.object().shape({
 });
 
 export default function SignUp() {
+  const loading = useSelector(state => state.user.loading);
   const dispatch = useDispatch();
 
   function handleSubmit(data) {
@@ -37,7 +39,9 @@ export default function SignUp() {
           placeholder="Sua senha secreta"
         />
 
-        <button type="submit">Criar conta</button>
+        <button type="submit">
+          {loading ? <FaHourglassHalf color="#fff" size={20} /> : 'Criar conta'}
+        </button>
       </Form>
       <Link to="/">Já tenho login</Link>
     </>
