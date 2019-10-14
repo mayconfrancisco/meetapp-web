@@ -16,3 +16,10 @@ export function myMeetupsFailure() {
     type: '@myMeetups/MY_MEETUPS_FAILURE',
   };
 }
+
+export function setCurrent(meetup) {
+  return {
+    type: '@myMeetups/SET_CURRENT',
+    payload: { meetup },
+  };
+}

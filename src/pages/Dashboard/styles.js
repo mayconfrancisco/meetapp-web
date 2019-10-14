@@ -39,7 +39,7 @@ export const MyMeetupsList = styled.ul`
   li {
     margin-bottom: 10px;
 
-    a {
+    button {
       display: flex;
       justify-content: space-between;
       width: 100%;

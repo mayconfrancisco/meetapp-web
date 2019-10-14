@@ -5,7 +5,11 @@ import pt from 'date-fns/locale/pt-BR';
 const INITIAL_STATE = {
   data: [],
   loading: false,
+  current: null,
 };
+
+// TODO MAYCON - nao precisava ter utilizado redux para este crud
+// refatorar mais tarde
 
 export default function myMeetups(state = INITIAL_STATE, action) {
   return produce(state, draft => {
@@ -34,6 +38,11 @@ export default function myMeetups(state = INITIAL_STATE, action) {
 
       case '@myMeetups/MY_MEETUPS_FAILURE': {
         draft.loading = false;
+        break;
+      }
+
+      case '@myMeetups/SET_CURRENT': {
+        draft.current = action.payload.meetup;
         break;
       }
 
