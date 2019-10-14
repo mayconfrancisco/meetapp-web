@@ -1,29 +1,42 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FaChevronRight } from 'react-icons/fa';
-import history from '~/services/history';
+import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt-BR';
+import { toast } from 'react-toastify';
 
-import {
-  myMeetupsRequest,
-  setCurrent,
-} from '~/store/modules/myMeetups/actions';
+import api from '~/services/api';
 
 import { Container, MyMeetupsList } from './styles';
 
 export default function Dashboard() {
-  // TODO MAYCON - refatorar - buscar da API atraves do ID na rota do router-dom
-  // Nao eh necessario usar o redux neste caso
-  const { data } = useSelector(state => state.myMeetups);
-  const dispatch = useDispatch();
+  const [myMeetups, setMyMeetups] = useState([]);
 
   useEffect(() => {
-    dispatch(myMeetupsRequest());
-  }, [dispatch]);
+    async function loadMyMeetups() {
+      try {
+        const response = await api.get('/organizing');
+        const meetups = response.data.map(mt => {
+          return {
+            ...mt,
+            dateFormatted: format(
+              parseISO(mt.date),
+              "dd 'de' MMMM ', às ' hh'h'",
+              { locale: pt },
+            ),
+          };
+        });
 
-  function handleViewDetails(meetup) {
-    dispatch(setCurrent(meetup));
-    history.push('/meetupdetails');
-  }
+        setMyMeetups(meetups);
+      } catch (err) {
+        toast.error(
+          'Erro ao carregar seus Meetups, verifique a conexão e tente novamente!',
+        );
+      }
+    }
+
+    loadMyMeetups();
+  }, []);
 
   return (
     <Container>
@@ -33,15 +46,15 @@ export default function Dashboard() {
       </header>
 
       <MyMeetupsList>
-        {data.map(meetup => (
+        {myMeetups.map(meetup => (
           <li key={meetup.id}>
-            <button type="button" onClick={() => handleViewDetails(meetup)}>
+            <Link to={`/mymeetup/${meetup.id}`}>
               <strong>{meetup.title}</strong>
               <div>
                 <span>{meetup.dateFormatted}</span>
                 <FaChevronRight size={12} />
               </div>
-            </button>
+            </Link>
           </li>
         ))}
       </MyMeetupsList>

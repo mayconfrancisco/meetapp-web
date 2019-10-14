@@ -29,7 +29,8 @@ export const MeetupContainer = styled.div`
   margin-top: 50px;
 
   img {
-    width: 100%;
+    max-height: 400px;
+    max-width: 900px;
   }
 `;
 

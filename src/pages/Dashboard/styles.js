@@ -39,13 +39,12 @@ export const MyMeetupsList = styled.ul`
   li {
     margin-bottom: 10px;
 
-    button {
+    a {
       display: flex;
       justify-content: space-between;
       width: 100%;
       padding: 20px;
       background: rgba(0, 0, 0, 0.3);
-      border: 0;
       border-radius: 4px;
       color: #fff;
 
