@@ -7,9 +7,11 @@ import { toast } from 'react-toastify';
 
 import api from '~/services/api';
 
+import Loading from '~/components/LoadingScreen';
 import { Container, MyMeetupsList } from './styles';
 
 export default function Dashboard() {
+  const [loading, setLoading] = useState(true);
   const [myMeetups, setMyMeetups] = useState([]);
 
   useEffect(() => {
@@ -32,6 +34,8 @@ export default function Dashboard() {
         toast.error(
           'Erro ao carregar seus Meetups, verifique a conexão e tente novamente!',
         );
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -40,24 +44,30 @@ export default function Dashboard() {
 
   return (
     <Container>
-      <header>
-        <h1>Meus Meetups</h1>
-        <button type="button">Novo meetup</button>
-      </header>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <header>
+            <h1>Meus Meetups</h1>
+            <button type="button">Novo meetup</button>
+          </header>
 
-      <MyMeetupsList>
-        {myMeetups.map(meetup => (
-          <li key={meetup.id}>
-            <Link to={`/mymeetup/${meetup.id}`}>
-              <strong>{meetup.title}</strong>
-              <div>
-                <span>{meetup.dateFormatted}</span>
-                <FaChevronRight size={12} />
-              </div>
-            </Link>
-          </li>
-        ))}
-      </MyMeetupsList>
+          <MyMeetupsList>
+            {myMeetups.map(meetup => (
+              <li key={meetup.id}>
+                <Link to={`/mymeetup/${meetup.id}`}>
+                  <strong>{meetup.title}</strong>
+                  <div>
+                    <span>{meetup.dateFormatted}</span>
+                    <FaChevronRight size={12} />
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </MyMeetupsList>
+        </>
+      )}
     </Container>
   );
 }

@@ -13,6 +13,7 @@ import {
 
 import api from '~/services/api';
 
+import Loading from '~/components/LoadingScreen';
 import {
   Container,
   MeetupContainer,
@@ -58,7 +59,7 @@ export default function MeetupDetails({ match }) {
   return (
     <Container>
       {loading ? (
-        <h1>Carregando</h1>
+        <Loading />
       ) : (
         <>
           <header>
