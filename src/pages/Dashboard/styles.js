@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 export const Container = styled.div`
-  padding-top: 50px;
-
   header {
     display: flex;
     flex-direction: row;
