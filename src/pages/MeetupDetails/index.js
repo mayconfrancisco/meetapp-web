@@ -21,7 +21,7 @@ import {
   MeetupLocation,
 } from './styles';
 
-export default function MeetupDetails({ match }) {
+export default function MeetupDetails({ match, history }) {
   const [meetup, setMeetup] = useState(null);
   const [loading, setLoading] = useState(true);
   const { meetupId } = match.params;
@@ -61,6 +61,7 @@ export default function MeetupDetails({ match }) {
       await api.delete(`/meetups/${meetup.id}`);
 
       toast.success('Meetup cancelado com sucesso!');
+      history.push('/dashboard');
     } catch (err) {
       const apiError =
         err.response && err.response.data ? err.response.data[0] : '';
@@ -115,5 +116,8 @@ MeetupDetails.propTypes = {
     params: PropTypes.shape({
       meetupId: PropTypes.string,
     }),
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
   }).isRequired,
 };
