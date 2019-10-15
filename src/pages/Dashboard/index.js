@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaChevronRight } from 'react-icons/fa';
+import { FaChevronRight, FaPlusCircle } from 'react-icons/fa';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
 import { toast } from 'react-toastify';
@@ -23,7 +23,7 @@ export default function Dashboard() {
             ...mt,
             dateFormatted: format(
               parseISO(mt.date),
-              "dd 'de' MMMM ', às ' hh'h'",
+              "dd 'de' MMMM ', às ' HH'h'",
               { locale: pt },
             ),
           };
@@ -50,7 +50,10 @@ export default function Dashboard() {
         <>
           <header>
             <h1>Meus Meetups</h1>
-            <button type="button">Novo meetup</button>
+            <Link to="/mymeetupsave">
+              <FaPlusCircle size={12} />
+              Novo meetup
+            </Link>
           </header>
 
           <MyMeetupsList>

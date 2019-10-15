@@ -11,19 +11,25 @@ export const Container = styled.div`
       color: #fff;
     }
 
-    button {
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 42px;
       background: #f94d6a;
       color: #fff;
       font-size: 16px;
       font-weight: bold;
       padding: 0 20px;
-      border: 0;
       border-radius: 4px;
       transition: background 0.2s;
 
       &:hover {
         background: ${darken(0.08, '#f94d6a')};
+      }
+
+      svg {
+        margin-right: 5px;
       }
     }
   }
