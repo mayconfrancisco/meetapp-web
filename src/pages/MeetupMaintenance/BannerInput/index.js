@@ -50,7 +50,7 @@ export default function BannerInput() {
           accept="image/*"
           onChange={handleChange}
           data-file={file}
-          ref={ref}
+          // ref={ref}
         />
       </label>
     </Container>

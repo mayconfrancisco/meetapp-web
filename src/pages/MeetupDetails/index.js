@@ -56,6 +56,18 @@ export default function MeetupDetails({ match }) {
     loadMeetup();
   }, [meetupId]);
 
+  async function handleCancel() {
+    try {
+      await api.delete(`/meetups/${meetup.id}`);
+
+      toast.success('Meetup cancelado com sucesso!');
+    } catch (err) {
+      const apiError =
+        err.response && err.response.data ? err.response.data[0] : '';
+      toast.error(`Não foi possível cancelar o meetup ${apiError}`);
+    }
+  }
+
   return (
     <Container>
       {loading ? (
@@ -69,10 +81,10 @@ export default function MeetupDetails({ match }) {
                 <FaEdit size={12} color="#fff" />
                 Editar
               </Link>
-              <Link to="/dashboard">
+              <button type="button" onClick={handleCancel}>
                 <FaTrashAlt size={12} color="#fff" />
                 Cancelar
-              </Link>
+              </button>
             </div>
           </header>
 

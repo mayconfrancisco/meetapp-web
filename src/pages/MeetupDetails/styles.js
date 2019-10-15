@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.div`
   header {
@@ -16,7 +17,31 @@ export const Container = styled.div`
       font-weight: bold;
       padding: 12px;
       border-radius: 4px;
-      margin-left: 12px;
+      margin-right: 12px;
+
+      svg {
+        margin-right: 5px;
+      }
+    }
+
+    button {
+      height: 42px;
+      background: #f94d6a;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 0 10px;
+      border: 0;
+      border-radius: 4px;
+      transition: background 0.2s;
+
+      &:hover {
+        background: ${darken(0.08, '#f94d6a')};
+      }
+
+      &:hover {
+        background: ${darken(0.08, '#f94d6a')};
+      }
 
       svg {
         margin-right: 5px;
