@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 
 import api from '~/services/api';
+
+import BannerInput from './BannerInput';
 import { Container } from './styles';
 
 const schema = Yup.object().shape({
@@ -42,6 +44,7 @@ export default function MeetupMaintenance() {
   return (
     <Container>
       <Form onSubmit={handleSubmit} schema={schema}>
+        <BannerInput name="banner_id" />
         <Input type="text" name="title" placeholder="Título do meetup" />
         <Input
           type="text"
