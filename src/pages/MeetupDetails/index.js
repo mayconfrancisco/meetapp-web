@@ -78,7 +78,7 @@ export default function MeetupDetails({ match, history }) {
           <header>
             <h1>{meetup.title}</h1>
             <div>
-              <Link to={`/meetup/${meetup.id}`}>
+              <Link to={`/mymeetupsave/${meetup.id}`}>
                 <FaEdit size={12} color="#fff" />
                 Editar
               </Link>
