@@ -13,6 +13,8 @@ Projeto desenvolvido como desafio no Bootcamp da Rocketseat
 
 **`yarn start`** _para iniciar a aplicação_
 
+_Configurações de rede podem ser alteradas no arquivo /src/services/api_
+
 __A aplicação de backend - [MeetAppServer](https://github.com/mayconfrancisco/meetapp-server) - deve estar rodando__
 
 _Você pode se interessar pelo [MeetApp Mobile](https://github.com/mayconfrancisco/meetapp-mobile) que é a versão móvel (Android/iOS - ReactNative) do MeetApp_
