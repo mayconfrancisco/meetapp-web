@@ -9,8 +9,7 @@ import PropTypes from 'prop-types';
 import api from '~/services/api';
 
 import Loading from '~/components/LoadingScreen';
-import BannerInput from './BannerInput';
-import { Container } from './styles';
+import { Container, FileContainer } from './styles';
 
 const schema = Yup.object().shape({
   title: Yup.string().required('O título é obrigatório'),
@@ -28,7 +27,8 @@ export default function MeetupMaintenance({ match, history }) {
   const [loading, setLoading] = useState(false);
   const { meetupId } = match.params;
 
-  console.tron.log('meetupId', meetupId);
+  const [file, setFile] = useState();
+  const [preview, setPreview] = useState();
 
   useEffect(() => {
     async function loadMeetupEdit() {
@@ -41,6 +41,8 @@ export default function MeetupMaintenance({ match, history }) {
             ...myMeetup,
             date: format(parseISO(myMeetup.date), "yyyy-MM-dd'T'hh:mm"),
           });
+          setFile(myMeetup.banner_id);
+          setPreview(myMeetup.banner.url);
         }
       } catch (err) {
         toast.error(
@@ -57,21 +59,14 @@ export default function MeetupMaintenance({ match, history }) {
     }
   }, [meetupId]);
 
-  async function createNewMeetup({
-    title,
-    description,
-    location,
-    date,
-    // banner_id, // TODO Maycon - problema de recursividade no componente - teremos que voltar algumas libs de versao
-  }) {
+  async function createNewMeetup({ title, description, location, date }) {
     try {
       await api.post('/meetups', {
         title,
         description,
         location,
         date,
-        // banner_id,
-        banner_id: 1,
+        banner_id: file,
       });
 
       toast.success('Meetup cadastrado com sucesso!');
@@ -87,21 +82,14 @@ export default function MeetupMaintenance({ match, history }) {
     }
   }
 
-  async function updateMeetup({
-    title,
-    description,
-    location,
-    date,
-    // banner_id, // TODO Maycon - problema de recursividade no componente - teremos que voltar algumas libs de versao
-  }) {
+  async function updateMeetup({ title, description, location, date }) {
     try {
       await api.put(`/meetups/${meetupId}`, {
         title,
         description,
         location,
         date,
-        // banner_id,
-        banner_id: 1,
+        banner_id: file,
       });
 
       toast.success('Meetup atualizado com sucesso!');
@@ -127,13 +115,45 @@ export default function MeetupMaintenance({ match, history }) {
     }
   }
 
+  async function handleFileChange(e) {
+    // cria um multpart formdata a adiciona o arquivo nele
+    const data = new FormData();
+    data.append('file', e.target.files[0]);
+
+    const response = await api.post('/files', data);
+
+    const { id, url } = response.data;
+
+    setFile(id);
+    setPreview(url);
+  }
+
   return (
     <Container>
       {loading ? (
         <Loading />
       ) : (
         <Form onSubmit={handleSubmit} schema={schema} initialData={meetup}>
-          <BannerInput name="banner_id" />
+          {/* UNFORM - Adicionei o componente de Banner aqui no form por conta de um problema
+          de recursividade ao setar a referencia no UNFORM - O render era chamado recursivamente
+          ao adicionar a ref do componente */}
+          <FileContainer>
+            <label htmlFor="banner">
+              <img
+                src={preview || `https://api.adorable.io/avatars/120/meetapp`}
+                alt="Banner do Meetup"
+              />
+
+              <input
+                type="file"
+                id="banner"
+                accept="image/*"
+                onChange={handleFileChange}
+                data-file={file}
+              />
+            </label>
+          </FileContainer>
+
           <Input type="text" name="title" placeholder="Título do meetup" />
           <Input
             type="text"
