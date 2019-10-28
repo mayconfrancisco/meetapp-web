@@ -64,8 +64,10 @@ export default function MeetupDetails({ match, history }) {
       history.push('/dashboard');
     } catch (err) {
       const apiError =
-        err.response && err.response.data ? err.response.data[0] : '';
-      toast.error(`Não foi possível cancelar o meetup ${apiError}`);
+        err.response && err.response.data && err.response.data.error
+          ? err.response.data.error
+          : '';
+      toast.error(`Não foi possível cancelar o meetup! ${apiError}`);
     }
   }
 

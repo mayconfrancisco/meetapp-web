@@ -72,11 +72,11 @@ export default function MeetupMaintenance({ match, history }) {
       toast.success('Meetup cadastrado com sucesso!');
       history.push('/dashboard');
     } catch (err) {
-      // TODO MAYCON - Tratar erros que venham da API
-      console.tron.log(err.response.data, err.response);
-      toast.error(
-        'Erro ao salvar Meetup, verifique seus dados e sua conexão e tente novamente!',
-      );
+      const apiError =
+        err.response && err.response.data && err.response.data.error
+          ? err.response.data.error
+          : '';
+      toast.error(`Erro ao salvar Meetup! ${apiError}`);
     } finally {
       setLoading(false);
     }
@@ -95,11 +95,11 @@ export default function MeetupMaintenance({ match, history }) {
       toast.success('Meetup atualizado com sucesso!');
       history.push('/dashboard');
     } catch (err) {
-      // TODO MAYCON - Tratar erros que venham da API
-      console.tron.log(err.response.data, err.response);
-      toast.error(
-        'Erro ao salvar Meetup, verifique seus dados e sua conexão e tente novamente!',
-      );
+      const apiError =
+        err.response && err.response.data && err.response.data.error
+          ? err.response.data.error
+          : '';
+      toast.error(`Erro ao salvar Meetup! ${apiError}`);
     } finally {
       setLoading(false);
     }
