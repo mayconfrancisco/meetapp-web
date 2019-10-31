@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Input } from '@rocketseat/unform';
-import { FaPlusCircle } from 'react-icons/fa';
+import { FaPlusCircle, FaCamera } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 import { parseISO, format } from 'date-fns';
@@ -139,10 +139,17 @@ export default function MeetupMaintenance({ match, history }) {
           ao adicionar a ref do componente */}
           <FileContainer>
             <label htmlFor="banner">
-              <img
-                src={preview || `https://api.adorable.io/avatars/120/meetapp`}
-                alt="Banner do Meetup"
-              />
+              {preview ? (
+                <img
+                  src={preview}
+                  alt="Banner do Meetup"
+                />
+              ):(
+                <>
+                <FaCamera size={40} color="rgba(255, 255, 255, 0.5)"/>
+                <p>Selecionar imagem</p>
+                </>
+              )}
 
               <input
                 type="file"

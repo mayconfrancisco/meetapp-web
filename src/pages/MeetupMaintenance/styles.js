@@ -78,6 +78,7 @@ export const FileContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    color: rgba(255, 255, 255, 0.5);
 
     &:hover {
       opacity: 0.6;
@@ -91,10 +92,8 @@ export const FileContainer = styled.div`
       display: none;
     }
 
-    p {
-      margin-top: 10px;
-      font-size: 20px;
-      color: rgba(255, 255, 255, 0.5);
+    svg {
+      padding-bottom: 10px;
     }
   }
 `;
